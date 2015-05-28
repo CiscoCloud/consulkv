@@ -34,7 +34,7 @@ Options:
 				(default: not set)
   --token			The Consul API token.
 				(default: not set)
-  --cas=<ModifyIndex>		Perform a Check-and-Set delete
+  --modifyindex=<ModifyIndex>	Perform a Check-and-Set delete
 				(default: not set)
   --recurse			Perform a recursive delete
 				(default: false)
@@ -61,6 +61,7 @@ func (c *DeleteCommand) Run (args[]string) int {
 		c.UI.Error("Key path must be specified")
 		c.UI.Error("")
 		c.UI.Error(c.Help())
+		return 1
 	}
 
 	path := extra[0]

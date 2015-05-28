@@ -36,9 +36,9 @@ Options:
 				(default: not set)
   --token			The Consul API token.
 				(default: not set)
-  --cas=<ModifyIndex>		Perform a Check-and-Set write.
-				(default: 0)
-  --flags=<number>		Integer value between0 and 2^64 - 1
+  --modifyindex=<ModifyIndex>	Perform a Check-and-Set write.
+				(default: not set)
+  --flags=<number>		Integer value between 0 and 2^64 - 1
 				(default: not set)
 `
 
