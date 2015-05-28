@@ -15,8 +15,20 @@ const Version = "0.1.0"
 func main() {
 	log.SetOutput(ioutil.Discard)
 
+	args := os.Args[1:]
+	for _, arg := range args {
+		if arg == "--" {
+			break
+		}
+
+		if arg == "-v" || arg == "--version" {
+			fmt.Printf("%s v%s\n", Name, Version)
+			os.Exit(0)
+		}
+	}
+
 	cli := &cli.CLI{
-		Args:		os.Args[1:],
+		Args:		args,
 		Commands:	Commands,
 		HelpFunc:	cli.BasicHelpFunc("consulkv"),
 	}
