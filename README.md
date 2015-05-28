@@ -26,14 +26,14 @@ Available commands are:
 
 ### Common arguments
 
-|     Option    | Default | Description |
-|---------------|---------|-------------|
-| `--consul`      | `127.0.0.1:8500` |HTTP address of the Consul Agent
-| `--ssl`         | `false` | Use HTTPS while talking to Consul
-| `--ssl-verify`  | `true` | Verify certificates when connecting via SSL. Requires `--ssl`
-| `--ssl-cert`    | `unset` | Path to an SSL client certificate to use to authenticate to the consul server
+| Option | Default | Description |
+| ------ | ------- | ----------- |
+| `--consul` | `127.0.0.1:8500` |HTTP address of the Consul Agent
+| `--ssl` | `false` | Use HTTPS while talking to Consul
+| `--ssl-verify` | `true` | Verify certificates when connecting via SSL. Requires `--ssl`
+| `--ssl-cert` | `unset` | Path to an SSL client certificate to use to authenticate to the consul server
 | `--ssl-ca-cert` | `unset` | Path to a CA certificate file, containing one or more CA certificates to use to validate the certificate sent by the consul server to us.
-| `--token`       | `unset` | The [Consul API token][Consul ACLs].
+| `--token` | `unset` | The [Consul API token][Consul ACLs].
 
 
 ### delete command
