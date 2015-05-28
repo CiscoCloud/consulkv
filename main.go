@@ -9,6 +9,9 @@ import (
 	"github.com/mitchellh/cli"
 )
 
+const Name = "consulkv"
+const Version = "0.1.0"
+
 func main() {
 	log.SetOutput(ioutil.Discard)
 
