@@ -62,6 +62,7 @@ func (c *ReadCommand) Run(args []string) int {
 	cmdFlags := NewFlagSet(c.Consul)
 	cmdFlags.StringVar(&fieldsRaw, "fields", "value", "")
 	cmdFlags.StringVar(&outputFormat, "format", "raw", "")
+	cmdFlags.Usage = func() { c.UI.Output(c.Help()) }
 
 	if err := cmdFlags.Parse(args); err != nil {
 		return 1

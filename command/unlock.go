@@ -50,6 +50,7 @@ func (c *UnlockCommand) Run(args []string) int {
 	c.Consul = new(ConsulFlags)
 	cmdFlags := NewFlagSet(c.Consul)
 	cmdFlags.StringVar(&sessionId, "session", "", "")
+	cmdFlags.Usage = func() { c.UI.Output(c.Help()) }
 
 	if err := cmdFlags.Parse(args); err != nil {
 		return 1

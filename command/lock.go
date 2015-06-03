@@ -55,6 +55,7 @@ func (c *LockCommand) Run(args []string) int {
 	cmdFlags.StringVar(&behavior, "behavior", "release", "")
 	cmdFlags.StringVar(&ttl, "ttl", "15s", "")
 	cmdFlags.DurationVar(&lockDelay, "lock-delay", 5 * time.Second, "")
+	cmdFlags.Usage = func() { c.UI.Output(c.Help()) }
 
 	if err := cmdFlags.Parse(args); err != nil {
 		return 1

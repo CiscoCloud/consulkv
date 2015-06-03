@@ -53,6 +53,7 @@ func (c *WriteCommand) Run(args []string) int {
 	cmdFlags := NewFlagSet(c.Consul)
 	cmdFlags.StringVar(&modifyIndex, "cas", "", "")
 	cmdFlags.StringVar(&flags, "flags", "", "")
+	cmdFlags.Usage = func() { c.UI.Output(c.Help()) }
 
 	if err := cmdFlags.Parse(args); err != nil {
 		return 1
