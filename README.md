@@ -28,7 +28,7 @@ Available commands are:
 
 | Option | Default | Description |
 | ------ | ------- | ----------- |
-| `--consul` | `127.0.0.1:8500` |HTTP address of the Consul Agent
+| `--consul` | `127.0.0.1:8500` | HTTP address of the Consul Agent
 | `--ssl` | `false` | Use HTTPS while talking to Consul
 | `--ssl-verify` | `true` | Verify certificates when connecting via SSL. Requires `--ssl`
 | `--ssl-cert` | `unset` | Path to an SSL client certificate to use to authenticate to the consul server
