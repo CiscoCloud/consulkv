@@ -92,6 +92,9 @@ func (c *ReadCommand) Run(args []string) int {
 		return 1
 	}
 
+	if kv == nil {
+		return 0
+	}
 
 	// Copy the fields that are to be output
 	//
