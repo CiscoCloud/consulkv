@@ -67,7 +67,6 @@ func (c *DeleteCommand) Run (args[]string) int {
 
 	path := extra[0]
 
-	writeOpts := new(consulapi.WriteOptions)
 	consul, err := NewConsulClient(c.Consul, &c.UI)
 	if err != nil {
 		c.UI.Error(err.Error())
@@ -77,7 +76,7 @@ func (c *DeleteCommand) Run (args[]string) int {
 
 	switch {
 	case doRecurse:
-		_, err := client.DeleteTree(path, writeOpts)
+		_, err := client.DeleteTree(path, nil)
 		if err != nil {
 			c.UI.Error(err.Error())
 			return 1
@@ -93,7 +92,7 @@ func (c *DeleteCommand) Run (args[]string) int {
 			ModifyIndex:	m,
 		}
 
-		success, _, err := client.DeleteCAS(&kv, writeOpts)
+		success, _, err := client.DeleteCAS(&kv, nil)
 		if err != nil {
 			c.UI.Error(err.Error())
 			return 1
@@ -103,7 +102,7 @@ func (c *DeleteCommand) Run (args[]string) int {
 			return 1
 		}
 	default:
-		_, err := client.Delete(path, writeOpts)
+		_, err := client.Delete(path, nil)
 		if err != nil {
 			c.UI.Error(err.Error())
 			return 1

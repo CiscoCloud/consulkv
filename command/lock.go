@@ -78,7 +78,6 @@ func (c *LockCommand) Run(args []string) int {
 	}
 
 	sessionClient := client.Session()
-	writeOpts := new(consulapi.WriteOptions)
 
 	// Create the Consul session
 	sessionId, _, err := sessionClient.CreateNoChecks(&consulapi.SessionEntry{
@@ -86,7 +85,7 @@ func (c *LockCommand) Run(args []string) int {
 						LockDelay:	lockDelay,
 						Behavior:	behavior,
 						TTL:		ttl,
-						}, writeOpts)
+						}, nil)
 	if err != nil {
 		c.UI.Error(err.Error())
 		return 1

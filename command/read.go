@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"strings"
 
-	consulapi "github.com/hashicorp/consul/api"
 	"github.com/mitchellh/cli"
 )
 
@@ -78,7 +77,6 @@ func (c *ReadCommand) Run(args []string) int {
 
 	path := extra[0]
 
-	queryOpts := new(consulapi.QueryOptions)
 	consul, err := NewConsulClient(c.Consul, &c.UI)
 	if err != nil {
 		c.UI.Error(err.Error())
@@ -86,7 +84,7 @@ func (c *ReadCommand) Run(args []string) int {
 	}
 	client := consul.KV()
 
-	kv, _, err := client.Get(path, queryOpts)
+	kv, _, err := client.Get(path, nil)
 	if err != nil {
 		c.UI.Error(err.Error())
 		return 1

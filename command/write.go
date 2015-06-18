@@ -71,7 +71,6 @@ func (c *WriteCommand) Run(args []string) int {
 	value := strings.Join(extra[1:], " ")
 
 	kv := new(consulapi.KVPair)
-	writeOpts := new(consulapi.WriteOptions)
 
 	kv.Key = path
 	if strings.HasPrefix(value, "@") {
@@ -105,7 +104,7 @@ func (c *WriteCommand) Run(args []string) int {
 	client := consul.KV()
 
 	if modifyIndex == "" {
-		_, err := client.Put(kv, writeOpts)
+		_, err := client.Put(kv, nil)
 		if err != nil {
 			c.UI.Error(err.Error())
 			return 1
@@ -120,7 +119,7 @@ func (c *WriteCommand) Run(args []string) int {
 		}
 		kv.ModifyIndex = i
 
-		success, _, err := client.CAS(kv, writeOpts)
+		success, _, err := client.CAS(kv, nil)
 		if err != nil {
 			c.UI.Error(err.Error())
 			return 1

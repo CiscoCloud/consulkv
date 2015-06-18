@@ -73,7 +73,6 @@ func (c *UnlockCommand) Run(args []string) int {
 
 	path := extra[0]
 
-	writeOpts := new(consulapi.WriteOptions)
 	consul, err := NewConsulClient(c.Consul, &c.UI)
 	if err != nil {
 		c.UI.Error(err.Error())
@@ -86,7 +85,7 @@ func (c *UnlockCommand) Run(args []string) int {
 	kv.Session = sessionId
 	kv.Flags = LockFlagValue
 
-	success, _, err := client.Release(kv, writeOpts)
+	success, _, err := client.Release(kv, nil)
 	if err != nil {
 		c.UI.Error(err.Error())
 		return 1
